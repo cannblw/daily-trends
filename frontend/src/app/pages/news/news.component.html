@@ -2,31 +2,31 @@
 
 <div class="container">
   <div class="column">
-    <div class="news">
+    <div class="news" *ngFor="let news of feed">
       <div class="photo-container">
-        <img src="http://via.placeholder.com/640x360" class="photo" />
+        <img [src]="news.image" class="photo" />
       </div>
 
       <div class="news-info">
-        <h1 class="title">TITLE</h1>
+        <h1 class="title">{{ news.title }}</h1>
 
         <div class="section-subtitle">
           <div class="item">
             <span>
               <strong>Source: </strong>
             </span>
-            <span>SOURCE</span>
+            <span>{{ news.source }}</span>
           </div>
 
           <div class="item">
             <span>
               <strong>Publisher: </strong>
             </span>
-            <span>PUBLISHER</span>
+            <span>{{ news.publisher }}</span>
           </div>
         </div>
 
-        <div class="body">BODY</div>
+        <div class="body">{{ news.body }}</div>
       </div>
 
     </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FeedService } from 'src/app/services/feed.service';
+import { Feed } from 'src/app/models/feed';
 
 @Component({
   selector: 'app-news',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsComponent implements OnInit {
 
-  constructor() { }
+  feed: Feed[];
+
+  constructor(
+    private feedService: FeedService
+  ) { }
 
   ngOnInit() {
+    this.feedService.getFeed().subscribe(feed => this.feed = feed);
   }
 
 }
