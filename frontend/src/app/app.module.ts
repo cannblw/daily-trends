@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NewsComponent } from './pages/news/news.component';
 import { HeaderComponent } from './pages/layout/header/header.component';
 import { FeedService } from './services/feed.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FeedService } from './services/feed.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     FeedService
