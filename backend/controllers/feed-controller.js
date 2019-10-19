@@ -1,8 +1,10 @@
 
+const feedService = require('../services/feed-service');
+
 class FeedController {
 
   findAll() {
-    return {FeedController: 'FeedController'};
+    return feedService.findAll();
   }
 
 } 
