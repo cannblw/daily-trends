@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 
 const Parser = require('rss-parser');
 const parser = new Parser();
@@ -10,10 +11,13 @@ class FeedService {
     const elMundoFeed = await this.findElMundoFeed();
     const elPaisFeed = await this.findElPaisFeed();
 
-    const elMundoItems = elMundoFeed.items.map(item => {
-      item.publisher = Publisher.EL_MUNDO;
-      return item;
-    });
+    const elMundoItems = await Promise.all(
+      elMundoFeed.items.map(async item => {
+        item['content:encoded'] = await this.findElMundoBody(item.link);
+        item.publisher = Publisher.EL_MUNDO;
+        return item;
+      })
+    );
 
     const elPaisItems = elPaisFeed.items.map(item => {
       item.publisher = Publisher.EL_PAIS;
@@ -31,6 +35,16 @@ class FeedService {
 
   async findElPaisFeed() {
     return parser.parseURL(environment.EL_PAIS_FEED);
+  }
+
+  async findElMundoBody(newsUrl) {
+    const jsonUrl = newsUrl.replace(/\.html$/, '.json');
+
+    const json = await fetch(jsonUrl).then(res => res.json());
+    const body = json.texto;
+
+    if (body) return body;
+    return null;
   }
 }
 
