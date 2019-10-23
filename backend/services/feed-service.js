@@ -43,8 +43,7 @@ class FeedService {
     const json = await fetch(jsonUrl).then(res => res.json());
     const body = json.texto;
 
-    if (body) return body;
-    return null;
+    return body || null;
   }
 }
 
