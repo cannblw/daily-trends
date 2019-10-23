@@ -4,7 +4,10 @@
   <div class="column">
     <div class="news" *ngFor="let news of feed">
       <div class="photo-container">
-        <img [src]="news.image" class="photo" />
+        <img *ngIf="news.image; else imageNotFound" [src]="news.image" class="photo" />
+        <ng-template #imageNotFound>
+          <img src="assets/no-image.png" class="photo" />  
+        </ng-template>
       </div>
 
       <div class="news-info">
