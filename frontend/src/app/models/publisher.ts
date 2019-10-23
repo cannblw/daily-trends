@@ -8,3 +8,8 @@ export enum Publisher {
   EL_MUNDO = 0,
   EL_PAIS = 1
 }
+
+export const PublisherName = [
+  'El Mundo',
+  'El País'
+];
