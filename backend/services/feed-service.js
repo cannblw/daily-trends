@@ -12,14 +12,14 @@ class FeedService {
     const elPaisFeed = await this.findElPaisFeed();
 
     const elMundoItems = await Promise.all(
-      elMundoFeed.items.map(async item => {
+      elMundoFeed.items.slice(0, environment.MAX_RESULTS_PER_SOURCE).map(async item => {
         item['content:encoded'] = await this.findElMundoBody(item.link);
         item.publisher = Publisher.EL_MUNDO;
         return item;
       })
     );
 
-    const elPaisItems = elPaisFeed.items.map(item => {
+    const elPaisItems = elPaisFeed.items.slice(0, environment.MAX_RESULTS_PER_SOURCE).map(item => {
       item.publisher = Publisher.EL_PAIS;
       return item;
     });
