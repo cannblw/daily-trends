@@ -13,20 +13,20 @@
         <div class="section-subtitle">
           <div class="item">
             <span>
-              <strong>Source: </strong>
+              <strong>Fuente: </strong>
             </span>
             <span>{{ news.source }}</span>
           </div>
 
           <div class="item">
             <span>
-              <strong>Publisher: </strong>
+              <strong>Editor: </strong>
             </span>
-            <span>{{ news.publisher }}</span>
+            <span>{{ PublisherName[+news.publisher] }}</span>
           </div>
         </div>
 
-        <div class="body">{{ news.body }}</div>
+        <div class="body" [innerHTML]="news.body"></div>
       </div>
 
     </div>
