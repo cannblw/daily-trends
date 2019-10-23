@@ -11,7 +11,9 @@ class FeedResponseDto {
   static fromServerItem(serverItem) {
     const feed = new FeedResponseDto();
     feed.image = (serverItem.enclosure && serverItem.enclosure.url) || null;
-    feed.publisher = serverItem.publisher || null;
+
+    feed.publisher = serverItem.publisher;
+    
     feed.source = serverItem.link || null;
     feed.title = serverItem.title || null;
 
