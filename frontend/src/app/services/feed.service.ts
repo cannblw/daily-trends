@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { find, map, concatAll, tap } from 'rxjs/operators';
 
 import { BaseService } from './base.service';
 import { Feed } from '../models/feed';
@@ -42,6 +42,14 @@ export class FeedService extends BaseService {
           return news;
         });
       })
+    );
+  }
+
+  findById(id: number): Observable<Feed> {
+    return this.getFeed().pipe(
+      concatAll(),
+      find((feed: Feed) => feed.id === id),
+      tap(a => console.log(a))
     );
   }
 
