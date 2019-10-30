@@ -30,7 +30,7 @@
         </div>
 
         <div class="body" [innerHTML]="news.shortBody"></div>
-        <div class="show-more" *ngIf="news.isExpandable">Leer más...</div>
+        <div class="show-more" *ngIf="news.isExpandable"><a [routerLink]="news.id">Leer más...</a></div>
       </div>
 
     </div>
