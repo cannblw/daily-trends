@@ -25,4 +25,11 @@ export class NewsComponent implements OnInit {
     this.feedService.getFeed().subscribe(feed => this.feed = feed);
   }
 
+  trackByNewsId(item: Feed, _: any) {
+    if (item) {
+      return item.id;
+    }
+
+    return null;
+  }
 }

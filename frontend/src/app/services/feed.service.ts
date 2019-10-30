@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { BaseService } from './base.service';
@@ -11,6 +11,8 @@ export class FeedService extends BaseService {
 
   private readonly MAX_PREVIEW_CHARACTERS = 500;
 
+  private feedList: Feed[] = [];
+
   constructor(
     private http: HttpClient
   ) {
@@ -18,9 +20,15 @@ export class FeedService extends BaseService {
   }
 
   getFeed(): Observable<Feed[]> {
+    if (this.feedList.length !== 0) {
+      return of(this.feedList);
+    }
+
     return this.fetchFeed().pipe(
       map((feeds: Feed[]) => {
-        return feeds.map(news => {
+        return feeds.map((news: Feed, index: number) => {
+          news.id = index;
+
           if (news.body) {
             news.shortBody = news.body.substr(0, this.MAX_PREVIEW_CHARACTERS);
 
