@@ -3,13 +3,25 @@
 <div class="container">
   <div class="column">
 
-      <div class="photo-container">
-          <img *ngIf="news.image; else imageNotFound" [src]="news.image" class="photo" />
-          <ng-template #imageNotFound>
-            <img src="assets/no-image.png" class="photo" />  
-          </ng-template>
-        </div>
+    <div class="photo-container">
+      <img *ngIf="news.image; else imageNotFound" [src]="news.image" class="photo" />
+      <ng-template #imageNotFound>
+        <img src="assets/no-image.png" class="photo" />
+      </ng-template>
+    </div>
+
+    <h1 class="title">{{ news.title }}</h1>
+
+    <div class="section-subtitle">
+      <div>
+        <span>
+          <strong>Fuente: </strong>
+        </span>
+        <span><a [href]="news.source">{{ PublisherName[+news.publisher] }}</a></span>
+      </div>
+    </div>
 
     <div class="body" [innerHTML]="news?.body"></div>
+
   </div>
 </div>

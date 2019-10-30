@@ -13,22 +13,6 @@
       <div class="news-info">
         <h1 class="title">{{ news.title }}</h1>
 
-        <div class="section-subtitle">
-          <div class="item">
-            <span>
-              <strong>Fuente: </strong>
-            </span>
-            <span>{{ news.source }}</span>
-          </div>
-
-          <div class="item">
-            <span>
-              <strong>Editor: </strong>
-            </span>
-            <span>{{ PublisherName[+news.publisher] }}</span>
-          </div>
-        </div>
-
         <div class="body" [innerHTML]="news.shortBody"></div>
         <div class="show-more" *ngIf="news.isExpandable"><a [routerLink]="news.id">Leer más...</a></div>
       </div>

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
 
 import { FeedService } from 'src/app/services/feed.service';
 import { Feed } from 'src/app/models/feed';
-import { PublisherName } from 'src/app/models/publisher';
 
 @Component({
   selector: 'app-news',
@@ -13,9 +11,6 @@ import { PublisherName } from 'src/app/models/publisher';
 export class NewsComponent implements OnInit {
 
   feed: Feed[];
-
-  // Make it available on HTML
-  PublisherName = PublisherName;
 
   constructor(
     private feedService: FeedService

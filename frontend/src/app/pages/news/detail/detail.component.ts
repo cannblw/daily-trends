@@ -3,7 +3,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FeedService } from 'src/app/services/feed.service';
 import { Feed } from 'src/app/models/feed';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { PublisherName } from 'src/app/models/publisher';
 
 @Component({
   selector: 'app-news-detail',
@@ -14,6 +15,9 @@ export class NewsDetailComponent implements OnInit, OnDestroy {
 
   newsDetailSubscription: Subscription;
   news: Feed;
+
+  // Make it available on HTML
+  PublisherName = PublisherName;
 
   constructor(
     private route: ActivatedRoute,
