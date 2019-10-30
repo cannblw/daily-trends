@@ -8,5 +8,15 @@
     padding: 16px;
     margin: auto;
     background-color: #fff;
+
+    .photo-container {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 36px;
+
+      .photo {
+        max-height: 30%;
+      }
+    }
   }
 }

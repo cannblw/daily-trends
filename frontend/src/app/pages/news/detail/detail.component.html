@@ -2,6 +2,14 @@
 
 <div class="container">
   <div class="column">
-   
+
+      <div class="photo-container">
+          <img *ngIf="news.image; else imageNotFound" [src]="news.image" class="photo" />
+          <ng-template #imageNotFound>
+            <img src="assets/no-image.png" class="photo" />  
+          </ng-template>
+        </div>
+
+    <div class="body" [innerHTML]="news?.body"></div>
   </div>
 </div>
